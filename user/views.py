@@ -19,10 +19,10 @@ def login(request):
         password = request.POST['password']
 
         # Authenticate user
-        user = User.objects.get( email=username, password=password)        
-        if user is not None:            
-            return redirect('user:home')
-        else:
+        try:
+            user = User.objects.get( email=username, password=password)                    
+            return redirect('task:home')
+        except:
             msg='Invalid username or password!'
     return render(request, 'user/login.html',{'status':msg})
 
