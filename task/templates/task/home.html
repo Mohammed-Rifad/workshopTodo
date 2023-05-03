@@ -1,0 +1,25 @@
+{% extends 'task/master.html' %}
+ 
+{% block content %}
+<h3  class="text-center mt-5">Add Task</h3>
+<div class="d-flex justify-content-center mt-3">
+   
+    <form>
+        <div class="mb-3">
+          <label for="task" class="form-label">Task</label>
+          <input type="text" class="form-control" id="task"  >
+           
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea  class="form-control" id="description" >
+            </textarea>
+             
+          </div>
+         
+        <button type="submit" class="btn btn-primary">Add</button>
+      </form>
+</div>
+
+
+{% endblock %}
