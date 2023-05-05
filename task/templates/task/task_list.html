@@ -1,0 +1,65 @@
+{% extends 'task/master.html' %}
+ 
+{% block content %} 
+ 
+<div>
+   <div>
+    <select name="" id="" class="form-control">
+      <option value="">Pending</option>
+      <option value="">Compleated</option>
+    </select>
+    
+   </div>
+    <table id="dtBasicExample" class="table table-hover table-primary" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th class="th-sm">Sl No
+      
+            </th>
+            <th class="th-sm">Task
+      
+            </th>
+            <th class="th-sm">Description
+      
+            </th>
+            <th class="th-sm">Date Added
+      
+            </th>
+            <th class="th-sm">Date Compleated
+      
+            </th>
+            <th class="th-sm">Status
+      
+            </th>
+            <th class="th-sm">Action
+      
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          {% for item in tasks %}
+          <tr>
+            <td>{{foorloop.counter}}</td>
+            <td> {{item.task}}</td>
+            <td>{{item.description}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.completion_date}}</td>
+            <td>{{item.status}}</td>
+            <td><a href="{% url 'task:edit' item.id %}" class="btn btn-info"><i class="bi bi-pencil-square"></i></a>
+             <a href="" class="btn btn-danger"><i class="bi bi-trash3"></i></a>
+            </td>
+            
+          </tr>        
+              
+          {% endfor%}
+         
+          
+          
+        </tbody>
+     
+      </table>
+      
+</div>
+
+{% endblock %}
