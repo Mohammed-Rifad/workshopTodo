@@ -14,6 +14,7 @@ def home(request):
 
 def login(request):
     msg=''
+    user1=User.objects.all()
     if request.method == 'POST':
         username = request.POST['username']
         password = request.POST['password']
@@ -24,7 +25,7 @@ def login(request):
             return redirect('task:home')
         except:
             msg='Invalid username or password!'
-    return render(request, 'user/login.html',{'status':msg})
+    return render(request, 'user/login.html',{'status':msg,"user":user1})
 
 
 def signup(request):
@@ -38,11 +39,12 @@ def signup(request):
         # Check if email already exists
         if User.objects.filter(email=email).exists():
             msg="Email already exists!"           
-            return render(request, 'user/signup.html',{'status':msg})
+            return render(request, 'user/signup.html',{'status':msg,})
         
         # Create a new user
         user = User(name=name, email=email,mobile=mobile, password=password)        
         user.save()
         msg="Your account has been created successfully!"  
+       
 
     return render(request, 'user/signup.html',{'status':msg})
